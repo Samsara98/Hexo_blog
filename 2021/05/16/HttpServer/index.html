@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>HttpServer | SamsarA</title><script src="https://cdn.bootcss.com/valine/1.4.4/Valine.min.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/mermaid/8.8.2/mermaid.min.js"></script><script>mermaid.initialize({
+  startOnLoad: true
+  , theme: 'dark'
+});</script><link rel="stylesheet" href="/samsara/css/arknights.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/samsara/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/samsara/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/samsara/atom.xml" title="SamsarA" type="application/atom+xml">
+</head><body><header><nav><a href="/samsara/">Home</a><a href="/samsara/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><h1>HttpServer</h1><hr></div><div id="post-content"><p>Welcome to <a href="https://samsara98.gitee.io/samsara/">SamsarA’s Blog</a>! If you get any problems when reading my blog, you can ask me on <a target="_blank" rel="noopener" href="https://gitee.com/samsara98/samsara">Gitee</a>.</p>
+<h1 id="HttpServer"><a href="#HttpServer" class="headerlink" title="HttpServer"></a>HttpServer</h1><pre><code>#IP #TCP #UDP #HTTP</code></pre>
+<p>&nbsp;  You can get source code on my <a target="_blank" rel="noopener" href="https://gitee.com/samsara98/jerryrat">Gitee</a>.</p>
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><h3 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h3><ol>
+<li><p>HTTP 协议（HyperText Transfer Protocol，超文本传输协议）：是客户端浏览器或其他程序与Web服务器之间的应用层通信协议 。</p>
+</li>
+<li><p>HTTPS 协议（HyperText Transfer Protocol over Secure Socket Layer）：可以理解为HTTP+SSL/TLS， 即 HTTP 下加入 SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL，用于安全的 HTTP 数据传输。</p>
+</li>
+</ol>
+<p>SSL（Secure Socket Layer，安全套接字层）：1994年为 Netscape 所研发，SSL 协议位于 TCP/IP 协议与各种应用层协议之间，为数据通讯提供安全支持。</p>
+<p>TLS（Transport Layer Security，传输层安全）：其前身是 SSL，它最初的几个版本（SSL 1.0、SSL 2.0、SSL 3.0）由网景公司开发，1999年从 3.1 开始被 IETF 标准化并改名，发展至今已经有 TLS 1.0、TLS 1.1、TLS 1.2 三个版本。SSL3.0和TLS1.0由于存在安全漏洞，已经很少被使用到。TLS 1.3 改动会比较大，目前还在草案阶段，目前使用最广泛的是TLS 1.1、TLS 1.2。<br>HTTPS（全称：HyperText Transfer Protocol over Secure Socket Layer），<br>初衷是为了保证数据安全。</p>
+<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><p>HTTP请求过程中，客户端与服务器之间没有任何身份确认的过程，数据全部明文传输，“裸奔”在互联网上，所以很容易遭到黑客的攻击，<br>客户端发出的请求很容易被黑客截获，如果此时黑客冒充服务器，则其可返回任意信息给客户端，而不被客户端察觉，既为“劫持” ,<br>HTTP 传输面临的风险有：</p>
+<ol>
+<li><p>窃听风险：第三方可以获知通信内容。</p>
+</li>
+<li><p>篡改风险：第三方可以修改通信内容。</p>
+</li>
+<li><p>冒充风险：第三方可以冒充他人身份参与通信。</p>
+</li>
+</ol>
+<p>SSL/TLS协议是为了解决这三大风险而设计的，希望达到：</p>
+<ol>
+<li><p>所有信息都是加密传播，第三方无法窃听。</p>
+</li>
+<li><p>具有校验机制，一旦被篡改，通信双方会立刻发现。</p>
+</li>
+<li><p>配备身份证书，防止身份被冒充。</p>
+</li>
+</ol>
+<p>所谓加密，就是一个函数，它接收密码和明文，然后输出密文.</p>
+<hr>
+<h3 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h3><p>使用对称加密的双方拥有相同的密钥，信息得到安全传输，但此种方式的缺点是：</p>
+<p>常用算法有DES、AES和IDEA等；</p>
+<p>密钥长度由算法设计决定，AES的密钥长度是128/192/256位；</p>
+<p>使用对称加密算法需要指定算法名称、工作模式和填充模式。</p>
+<p>密钥长度直接决定加密强度，而工作模式和填充模式可以看成是对称加密算法的参数和格式选择。</p>
+<p>（1）不同的客户端、服务器数量庞大，所以双方都需要维护大量的密钥，维护成本很高</p>
+<p>（2）因每个客户端、服务器的安全级别不同，密钥极易泄露</p>
+<ul>
+<li><p>口令加密：</p>
+<p>  对称加密的口令，即用户输入的口令并不能直接作为AES的密钥进行加密（除非长度恰好是128/192/256位），并且用户输入的口令一般都有规律，</p>
+<p>  安全性远远不如安全随机数产生的随机口令。因此，用户输入的口令，通常还需要使用PBE算法，采用随机数杂凑计算出真正的密钥，再进行加密。</p>
+</li>
+</ul>
+<hr>
+<h3 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h3><p>公钥-私钥组成的密钥对是非常有用的加密方式，因为公钥是可以公开的，而私钥是完全保密的，由此奠定了非对称加密的基础。</p>
+<p>非对称加密就是加密和解密使用的不是相同的密钥：只有同一个公钥-私钥对才能正常加解密。</p>
+<p>客户端索取服务器端的公钥对请求内容加密，服务器使用自己的私钥对内容解密，反之亦然。</p>
+<p>非对称加密相比对称加密的显著优点在于：</p>
+<pre><code>对称加密需要协商密钥，多密钥管理难度大，而且非常容易泄漏。
+而非对称加密可以安全地公开各自的公钥</code></pre>
+<p>上述过程也存在缺点：</p>
+<pre><code>非对称加密的运算速度非常慢，比对称加密要慢很多。</code></pre>
+<ul>
+<li>密钥交换：</li>
+</ul>
+<p>对称加密算法解决了数据加密的问题。用户需要向服务器发送一个加密文件，可以先生成一个AES密钥，对文件进行加密，然后把加密文件发送给客户端。但是要解密，就必须需要密钥。</p>
+<p>现在问题来了：如何传递密钥？</p>
+<p>在不安全的信道上传递加密文件是没有问题的，因为黑客拿到加密文件没有用。但是，如何如何在不安全的信道上安全地传输密钥？</p>
+<p>要解决这个问题，密钥交换算法即DH算法：Diffie-Hellman算法应运而生。</p>
+<p>DH算法是一个密钥协商算法，双方最终协商出一个共同的密钥，而这个密钥不会通过网络传输。</p>
+<hr>
+<h3 id="混合加密"><a href="#混合加密" class="headerlink" title="混合加密"></a>混合加密</h3><p>实际应用的时候，非对称加密总是和对称加密一起使用。<br>因为非对称加密计算量太大，因此服务器公钥只用于加密”对话密钥”本身，这样就减少了加密运算的消耗时间。<br>客户端需要给服务器传输加密文件，首先交换了各自的公钥，然后：</p>
+<pre><code>1. 客户端生成一个随机的对话密钥，使用服务器的公钥通过加密这个口令，并发送给客户端；
+2. 服务器用自己的私钥解密得到对话密钥；
+3. 双方使用这个共享的对话密钥加密通信。</code></pre>
+<ul>
+<li>如何保证公钥不被篡改：</li>
+</ul>
+<p>将公钥放在数字证书中。只要证书是可信的，公钥就是可信的。</p>
+<hr>
+<h3 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h3><ul>
+<li><p>摘要算法用来确保数据没有被篡改。</p>
+</li>
+<li><p>非对称加密算法可以对数据进行加解密。</p>
+</li>
+<li><p>签名算法可以确保数据完整性和抗否认性。</p>
+</li>
+</ul>
+<p>把这些算法集合到一起，并搞一套完善的标准，这就是数字证书。</p>
+<p>因此，数字证书就是集合了多种密码学算法，用于实现数据加解密、身份认证、签名等多种功能的一种安全标准。</p>
+<p>数字证书可以防止中间人攻击，因为它采用链式签名认证，即通过根证书（Root CA）去签名下一级证书，这样层层签名，直到最终的用户证书。而Root CA证书内置于操作系统中，所以，任何经过CA认证的数字证书都可以对其本身进行校验，确保证书本身不是伪造的。</p>
+<p>要使用数字证书，首先需要创建证书。正常情况下，一个合法的数字证书需要经过CA签名，这需要认证域名并支付一定的费用。</p>
+<ul>
+<li>HTTPS协议:</li>
+</ul>
+<p>浏览器和服务器建立安全连接的步骤如下：</p>
+<ol>
+<li><p>浏览器向服务器发起请求，服务器向浏览器发送自己的数字证书；</p>
+</li>
+<li><p>浏览器用操作系统内置的Root CA来验证服务器的证书是否有效，如果有效，就使用该证书加密一个随机的AES口令并发送给服务器；</p>
+</li>
+<li><p>服务器用自己的私钥解密获得AES口令，并在后续通讯中使用AES加密。</p>
+</li>
+</ol>
+<hr>
+<h3 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h3><p>使用非对称加密算法的时候，对于一个公钥-私钥对，通常是用公钥加密，私钥解密。</p>
+<p>如果反过来使用私钥加密，公钥解密是否可行呢？</p>
+<p>私钥加密得到的密文实际上就是数字签名，要验证这个签名是否正确，只能用私钥持有者的公钥进行解密验证。使用数字签名的目的是为了确认某个信息确实是由某个发送方发送的，任何人都不可能伪造消息，并且，发送方也不能抵赖。</p>
+<p>在实际应用的时候，签名实际上并不是针对原始消息，而是针对原始消息的哈希进行签名。</p>
+<p>在网站上下载软件的时候，经常看到下载页显示的哈希，如何判断下载到本地的软件是原始的、未经篡改的文件？</p>
+<p>我们只需要自己计算一下本地文件的哈希值，再与官网公开的哈希值对比，如果相同，说明文件下载正确，否则，说明文件已被篡改。</p>
+<p>数字签名用于：</p>
+<ul>
+<li>防止伪造</li>
+<li>防止抵赖</li>
+<li>检测篡改</li>
+</ul>
+<h2 id="握手阶段"><a href="#握手阶段" class="headerlink" title="握手阶段"></a>握手阶段</h2><h3 id="客户端发出请求"><a href="#客户端发出请求" class="headerlink" title="客户端发出请求"></a>客户端发出请求</h3><p>首先，客户端（通常是浏览器）先向服务器发出加密通信的请求，这被叫做ClientHello请求。</p>
+<p>在这一步，客户端主要向服务器提供以下信息。</p>
+<pre><code>（1） 支持的协议版本，比如TLS 1.0版。
+
+（2） 一个客户端生成的随机数，稍后用于生成&quot;对话密钥&quot;。
+
+（3） 支持的加密方法，比如RSA公钥加密。
+
+（4） 支持的压缩方法。</code></pre>
+<h3 id="服务器回应"><a href="#服务器回应" class="headerlink" title="服务器回应"></a>服务器回应</h3><p>服务器收到客户端请求后，向客户端发出回应，这叫做SeverHello。服务器的回应包含以下内容。</p>
+<pre><code>（1） 确认使用的加密通信协议版本，比如TLS 1.0版本。如果浏览器与服务器支持的版本不一致，服务器关闭加密通信。
+
+（2） 一个服务器生成的随机数，稍后用于生成&quot;对话密钥&quot;。
+
+（3） 确认使用的加密方法，比如RSA公钥加密。
+
+（4） 服务器证书。</code></pre>
+<h3 id="客户端回应"><a href="#客户端回应" class="headerlink" title="客户端回应"></a>客户端回应</h3><p>客户端收到服务器回应以后，首先验证服务器证书。如果证书不是可信机构颁布、或者证书中的域名与实际域名不一致、或者证书已经过期，就会向访问者显示一个警告，由其选择是否还要继续通信。</p>
+<p>如果证书没有问题，客户端就会从证书中取出服务器的公钥。然后，向服务器发送下面三项信息。</p>
+<pre><code>（1） 一个随机数。该随机数用服务器公钥加密，防止被窃听。
+
+（2） 编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送。
+
+（3） 客户端握手结束通知，表示客户端的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供服务器校验。</code></pre>
+<h3 id="服务器的最后回应"><a href="#服务器的最后回应" class="headerlink" title="服务器的最后回应"></a>服务器的最后回应</h3><p>服务器收到客户端的第三个随机数pre-master key之后，计算生成本次会话所用的”会话密钥”。然后，向客户端最后发送下面信息。</p>
+<pre><code>（1）编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送。
+
+（2）服务器握手结束通知，表示服务器的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供客户端校验。</code></pre>
+<p>整个握手阶段全部结束。接下来，客户端与服务器进入加密通信，就完全是使用普通的HTTP协议，只不过用”会话密钥”加密内容。</p>
+<div id="paginator"></div></div><div id="post-footer"><hr><a href="/samsara/2021/05/06/Adabank3/">Adabank3 Next →</a><hr></div><div id="bottom-btn"><a id="to-index" href="#post-index" title="index">≡</a><a id="to-top" href="#post-title" title="to top">∧</a></div><div id="Valine"></div><script>new Valine({
+ el: '#Valine'
+ , appId: ''
+ , appKey: ''
+ , placeholder: '此条评论委托企鹅物流发送'
+})</script></div></article><aside><div id="about"><a href="/samsara/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/"> Dr.SamsarA</a></h1><section id="total"><a id="total-archives" href="/samsara/archives"><span class="total-title">Archives Total:</span><span class="total-number">13</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">1</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">1</span></div></section></div><div id="aside-block" style="order: -1"></div><footer><nobr><span class="text-title">©</span><span class="text-content">1998 to 2021</span></nobr><wbr><nobr><span class="text-title">ICP</span><span class="text-content">——SAS——</span></nobr><wbr><wbr><nobr>published with&nbsp;<a target="_blank" rel="noopener" href="http://hexo.io">Hexo&nbsp;</a></nobr><wbr><nobr>Theme&nbsp;<a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknight&nbsp;</a></nobr><wbr><nobr>by&nbsp;<a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/samsara/js/arknights.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script></body></html>
