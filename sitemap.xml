@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://samsara98.gitee.io/samsara/2021/05/31/Concurrency/</loc>
+    
+    <lastmod>2021-06-01</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://samsara98.gitee.io/samsara/2021/05/26/adamall/</loc>
     
     <lastmod>2021-05-27</lastmod>
@@ -102,7 +109,7 @@
 
   <url>
     <loc>https://samsara98.gitee.io/samsara</loc>
-    <lastmod>2021-05-27</lastmod>
+    <lastmod>2021-06-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -110,7 +117,7 @@
   
   <url>
     <loc>https://samsara98.gitee.io/samsara/tags/Study/</loc>
-    <lastmod>2021-05-27</lastmod>
+    <lastmod>2021-06-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -119,7 +126,7 @@
   
   <url>
     <loc>https://samsara98.gitee.io/samsara/categories/Adalab/</loc>
-    <lastmod>2021-05-27</lastmod>
+    <lastmod>2021-06-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

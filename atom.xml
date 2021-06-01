@@ -6,7 +6,7 @@
   <link href="https://samsara98.gitee.io/samsara/atom.xml" rel="self"/>
   
   <link href="https://samsara98.gitee.io/samsara/"/>
-  <updated>2021-05-27T07:39:53.012Z</updated>
+  <updated>2021-06-01T03:05:48.153Z</updated>
   <id>https://samsara98.gitee.io/samsara/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Concurrency and Parallelism</title>
+    <link href="https://samsara98.gitee.io/samsara/2021/05/31/Concurrency/"/>
+    <id>https://samsara98.gitee.io/samsara/2021/05/31/Concurrency/</id>
+    <published>2021-05-31T08:46:37.000Z</published>
+    <updated>2021-06-01T03:05:48.153Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://samsara98.gitee.io/samsara/">SamsarA’s Blog</a>! If you get any problems when reading my blog, you can<br>ask me on <a href="https://gitee.com/samsara98/samsara">Gitee</a>.</p><h1 id="Concurrency-and-Parallelism"><a href="#Concurrency-and-Parallelism" class="headerlink" title="Concurrency and Parallelism"></a>Concurrency and Parallelism</h1><pre><code>#Thread #Lock </code></pre><p>&nbsp; You can get source code on my <a href="https://gitee.com/samsara98/">Gitee</a>.</p><h2 id="Lock"><a href="#Lock" class="headerlink" title="Lock"></a>Lock</h2><h3 id="互斥锁与自旋锁"><a href="#互斥锁与自旋锁" class="headerlink" title="互斥锁与自旋锁"></a>互斥锁与自旋锁</h3><p>最底层的两种就是会「互斥锁和自旋锁」，有很多高级的锁都是基于它们实现的，你可以认为它们是各种锁的地基</p><p>加锁的目的就是保证共享资源在任意时间里，只有一个线程访问，这样就可以避免多线程导致共享数据错乱的问题。</p><p>当已经有一个线程加锁后，其他线程加锁则就会失败，互斥锁和自旋锁对于加锁失败后的处理方式是不一样的：</p><ul><li><p>互斥锁加锁失败后，线程会释放 CPU ，给其他线程</p></li><li><p>自旋锁加锁失败后，线程会忙等待，直到它拿到锁</p></li></ul><p>自旋锁与互斥锁使用层面比较相似，但实现层面上完全不同：当加锁失败时，互斥锁用「线程切换」来应对，自旋锁则用「忙等待」来应对。</p><p>如果你能确定被锁住的代码执行时间很短，就不应该用互斥锁，而应该选用自旋锁，否则使用互斥锁。</p><h4 id="互斥锁"><a href="#互斥锁" class="headerlink" title="互斥锁"></a>互斥锁</h4><p>互斥锁是一种「独占锁」，比如当线程 A 加锁成功后，此时互斥锁已经被线程 A 独占了，</p><p>只要线程 A 没有释放手中的锁，线程 B 加锁就会失败，于是就会释放 CPU 让给其他线程，既然线程 B 释放掉了 CPU，自然线程 B 加锁的代码就会被阻塞。</p><p>对于互斥锁加锁失败而阻塞的现象，是由操作系统内核实现的。当加锁失败时，</p><p>内核会将线程置为「睡眠」状态，等到锁被释放后，内核会在合适的时机唤醒线程，当这个线程成功获取到锁后，于是就可以继续执行。</p><p><img src="https://oscimg.oschina.net/oscnet/e15a17cd-ded1-463c-877b-5c248c85912f.png" alt="1.png"></p><p>互斥锁加锁失败时，会从用户态陷入到内核态，让内核帮我们切换线程，虽然简化了使用锁的难度，但是存在一定的性能开销成本。</p><p>那这个开销成本是什么呢？会有两次线程上下文切换的成本：</p><ul><li><p>当线程加锁失败时，内核会把线程的状态从「运行」状态设置为「睡眠」状态，然后把 CPU 切换给其他线程运行；</p></li><li><p>接着，当锁被释放时，之前「睡眠」状态的线程会变为「就绪」状态，然后内核会在合适的时间，把 CPU 切换给该线程运行。</p></li></ul><p>线程的上下文切换的是什么？当两个线程是属于同一个进程，因为虚拟内存是共享的，所以在切换时，虚拟内存这些资源就保持不动，只需要切换线程的私有数据、寄存器等不共享的数据。</p><p>上下切换的耗时有大佬统计过，大概在几十纳秒到几微秒之间，如果你锁住的代码执行时间比较短，那可能上下文切换的时间都比你锁住的代码执行时间还要长。</p><hr><h4 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h4><p>自旋锁是通过 CPU 提供的 CAS 函数（Compare And Swap），在「用户态」完成加锁和解锁操作，不会主动产生线程上下文切换，所以相比互斥锁来说，会快一些，开销也小一些。</p><p>一般加锁的过程，包含两个步骤：</p><ol><li><p>查看锁的状态，如果锁是空闲的，则执行第二步</p></li><li><p>第二步，将锁设置为当前线程持有</p></li></ol><p>自旋锁是最比较简单的一种锁，一直自旋，利用 CPU 周期，直到锁可用。</p><p>需要注意，在单核 CPU 上，需要抢占式的调度器（即不断通过时钟中断一个线程，运行其他线程）。</p><p>否则，自旋锁在单 CPU 上无法使用，因为一个自旋的线程永远不会放弃 CPU。</p><p>旋锁开销少，在多核系统下一般不会主动产生线程切换，适合异步、协程等在用户态切换请求的编程方式，</p><p>但如果被锁住的代码执行时间过长，自旋的线程会长时间占用 CPU 资源，所以自旋的时间和被锁住的代码执行的时间是成「正比」的关系</p><hr><h3 id="读写锁"><a href="#读写锁" class="headerlink" title="读写锁"></a>读写锁</h3><p>读写锁从字面意思我们也可以知道，它由「读锁」和「写锁」两部分构成，如果只读取共享资源用「读锁」加锁，如果要修改共享资源则用「写锁」加锁。</p><p>所以，读写锁适用于能明确区分读操作和写操作的场景。</p><ul><li>只允许一个线程写入（其他线程既不能写入也不能读取）；</li><li>没有写入时，多个线程允许同时读（提高性能）。</li><li>适合读多写少的场景。</li></ul><p>工作原理</p><ul><li><p>当「写锁」没有被线程持有时，多个线程能够并发地持有读锁，这大大提高了共享资源的访问效率，因为「读锁」是用于读取共享资源的场景，所以多个线程同时持有读锁也不会破坏共享资源的数据。</p></li><li><p>但是，一旦「写锁」被线程持有后，读线程的获取读锁的操作会被阻塞，而且其他写线程的获取写锁的操作也会被阻塞。</p></li></ul><hr><h4 id="ReadWriteLock-and-StampedLock"><a href="#ReadWriteLock-and-StampedLock" class="headerlink" title="ReadWriteLock and StampedLock"></a>ReadWriteLock and StampedLock</h4><p>ReadWriteLock可以解决多线程同时读，但只有一个线程能写的问题。</p><p>如果有线程正在读，写线程需要等待读线程释放锁后才能获取写锁，即读的过程中不允许写，这是一种悲观的读锁。</p><p>要进一步提升并发执行效率，Java 8引入了新的读写锁：StampedLock。</p><p>StampedLock和ReadWriteLock相比，改进之处在于：读的过程中也允许获取写锁后写入！这样一来，我们读的数据就可能不一致，所以，需要一点额外的代码来判断读的过程中是否有写入，这种读锁是一种乐观锁。</p><p>乐观锁的意思就是乐观地估计读的过程中大概率不会有写入，因此被称为乐观锁。反过来，悲观锁则是读的过程中拒绝有写入，也就是写入必须等待。显然乐观锁的并发效率更高，但一旦有小概率的写入导致读取的数据不一致，需要能检测出来，再读一遍就行。</p><p>和ReadWriteLock相比，写入的加锁是完全一样的，不同的是读取。首先获取一个乐观读锁，并返回版本号。接着进行读取，读取完成后去验证版本号，</p><p>如果在读取过程中没有写入，版本号不变，验证成功，我们就可以放心地继续后续操作。</p><p>如果在读取过程中有写入，版本号会发生变化，验证将失败。在失败的时候，我们再通过获取悲观读锁再次读取。由于写入的概率不高，程序在绝大部分情况下可以通过乐观读锁获取数据，极少数情况下使用悲观读锁获取数据。</p><p>可见，StampedLock把读锁细分为乐观读和悲观读，能进一步提升并发效率。但这也是有代价的：一是代码更加复杂，二是StampedLock是不可重入锁，不能在一个线程中反复获取同一个锁。</p><p>StampedLock还提供了更复杂的将悲观读锁升级为写锁的功能，它主要使用在if-then-update的场景：即先读，如果读的数据满足条件，就返回，如果读的数据不满足条件，再尝试写。</p><ul><li><p>StampedLock提供了乐观读锁，可取代ReadWriteLock以进一步提升并发性能；</p></li><li><p>StampedLock是不可重入锁。</p></li></ul><hr><h3 id="乐观锁与悲观锁"><a href="#乐观锁与悲观锁" class="headerlink" title="乐观锁与悲观锁"></a>乐观锁与悲观锁</h3><ul><li><p>悲观锁适合写操作多的场景，先加锁可以保证写操作时数据正确。</p></li><li><p>乐观锁适合读操作多的场景，不加锁的特点能够使其读操作的性能大幅提升</p></li></ul><hr><h4 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h4><p>互斥锁、自旋锁、读写锁，都是属于悲观锁。</p><p>认为多线程同时修改共享资源的概率比较高，于是很容易出现冲突，所以访问共享资源前，先要上锁。</p><hr><h4 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h4><p>假定冲突的概率很低，它的工作方式是：先修改完共享资源，再验证这段时间内有没有发生冲突，</p><p>如果没有其他线程在修改资源，那么操作完成，</p><p>如果发现有其他线程已经修改过这个资源，就放弃本次操作。</p><p>乐观锁全程并没有加锁，所以它也叫无锁编程。</p><hr><h5 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h5><p>CAS全称 Compare And Swap（比较与交换），是一种无锁算法。</p><p>在不使用锁（没有线程被阻塞）的情况下实现多线程之间的变量同步。 java.util.concurrent包中的原子类就是通过CAS来实现了乐观锁。</p><p>CAS算法涉及到三个操作数：</p><ul><li>需要读写的内存值 V。</li><li>进行比较的值 A。</li><li>要写入的新值 B。</li></ul><p>当且仅当 V 的值等于 A 时，CAS通过原子方式用新值B来更新V的值（“比较+更新”整体是一个原子操作），否则不会执行任何操作。一般情况下，“更新”是一个不断重试的操作。</p><p>CAS虽然很高效，但是它也存在三大问题：</p><ol><li>ABA问题。</li></ol><p>CAS需要在操作值的时候检查内存值是否发生变化，没有发生变化才会更新内存值。</p><p>但是如果内存值原来是A，后来变成了B，然后又变成了A，那么CAS进行检查时会发现值没有发生变化，但是实际上是有变化的。ABA问题的解决思路就是在变量前面添加版本号，每次变量更新的时候都把版本号加一，这样变化过程就从“A－B－A”变成了“1A－2B－3A”。</p><p>JDK从1.5开始提供了AtomicStampedReference类来解决ABA问题，具体操作封装在compareAndSet()中。compareAndSet()首先检查当前引用和当前标志与预期引用和预期标志是否相等，如果都相等，则以原子方式将引用值和标志的值设置为给定的更新值。<br>2. 循环时间长开销大。</p><p>CAS操作如果长时间不成功，会导致其一直自旋，给CPU带来非常大的开销。<br>3. 只能保证一个共享变量的原子操作。</p><p>对一个共享变量执行操作时，CAS能够保证原子操作，但是对多个共享变量操作时，CAS是无法保证操作的原子性的。</p><p>Java从1.5开始JDK提供了AtomicReference类来保证引用对象之间的原子性，可以把多个变量放在一个对象里来进行CAS操作。</p><hr><h5 id="乐观锁应用"><a href="#乐观锁应用" class="headerlink" title="乐观锁应用"></a>乐观锁应用</h5><ul><li>在线文档</li></ul><p>我们都知道在线文档可以同时多人编辑的，如果使用了悲观锁，那么只要有一个用户正在编辑文档，此时其他用户就无法打开相同的文档了，这用户体验当然不好了。</p><p>那实现多人同时编辑，实际上是用了乐观锁，它允许多个用户打开同一个文档进行编辑，编辑完提交之后才验证修改的内容是否有冲突。</p><p>怎么样才算发生冲突？这里举个例子，比如用户 A 先在浏览器编辑文档，之后用户 B 在浏览器也打开了相同的文档进行编辑，</p><p>当 A 提交修改完的内容时，那么 A 和 B 之间并行修改的地方就会发生冲突。</p><p>服务端要怎么验证是否冲突了呢？通常方案如下：</p><ul><li><p>由于发生冲突的概率比较低，所以先让用户编辑文档，但是浏览器在下载文档时会记录下服务端返回的文档版本号；</p></li><li><p>当用户提交修改时，发给服务端的请求会带上原始文档版本号，服务器收到后将它与当前版本号进行比较，如果版本号一致则修改成功，否则提交失败。</p></li></ul><p>实际上，我们常见的 SVN 和 Git 也是用了乐观锁的思想，先让用户编辑代码，然后提交的时候，通过版本号来判断是否产生了冲突，发生了冲突的地方，需要我们自己修改后，再重新提交。</p><p>乐观锁虽然去除了加锁解锁的操作，但是一旦发生冲突，重试的成本非常高，所以只有在冲突概率非常低，且加锁成本非常高的场景时，才考虑使用乐观锁。</p><hr><h3 id="可重入锁和不可重入锁"><a href="#可重入锁和不可重入锁" class="headerlink" title="可重入锁和不可重入锁"></a>可重入锁和不可重入锁</h3><p>可重入锁又名递归锁，是指在同一个线程在外层方法获取锁的时候，再进入该线程的内层方法会自动获取锁（前提锁对象得是同一个对象或者class），不会因为之前已经获取过还没释放而阻塞。</p><p>Java中ReentrantLock和synchronized都是可重入锁，可重入锁的一个优点是可一定程度避免死锁。</p><p>当线程请求一个未被持有的锁时,JVM将记下锁的持有者,并且将获取计数值置为1,如果同一个线程再次获取这个锁,计数值将递增,退出一次同步代码块,计算值递减,当计数值为0时,这个锁就被释放。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://samsara98.gitee.io/samsara/&quot;&gt;SamsarA’s Blog&lt;/a&gt;! If you get any problems when reading my blog, you can&lt;br&gt;ask</summary>
+      
+    
+    
+    
+    <category term="Adalab" scheme="https://samsara98.gitee.io/samsara/categories/Adalab/"/>
+    
+    
+    <category term="-Study" scheme="https://samsara98.gitee.io/samsara/tags/Study/"/>
+    
+  </entry>
   
   <entry>
     <title>Adamall</title>
