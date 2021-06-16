@@ -3,11 +3,11 @@
   <title>SamsarA</title>
   
   
-  <link href="https://wk1044481101.github.io/SamsaraHexo/atom.xml" rel="self"/>
+  <link href="https://github.com/wk1044481101/wk1044481101.github.io/atom.xml" rel="self"/>
   
-  <link href="https://wk1044481101.github.io/SamsaraHexo/"/>
+  <link href="https://github.com/wk1044481101/wk1044481101.github.io/"/>
   <updated>2021-06-15T11:04:20.280Z</updated>
-  <id>https://wk1044481101.github.io/SamsaraHexo/</id>
+  <id>https://github.com/wk1044481101/wk1044481101.github.io/</id>
   
   <author>
     <name>SamsarA</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Concurrency and Parallelism</title>
-    <link href="https://wk1044481101.github.io/SamsaraHexo/2021/05/31/Concurrency/"/>
-    <id>https://wk1044481101.github.io/SamsaraHexo/2021/05/31/Concurrency/</id>
+    <link href="https://github.com/wk1044481101/wk1044481101.github.io/2021/05/31/Concurrency/"/>
+    <id>https://github.com/wk1044481101/wk1044481101.github.io/2021/05/31/Concurrency/</id>
     <published>2021-05-31T08:46:37.000Z</published>
     <updated>2021-06-15T11:04:20.280Z</updated>
     
@@ -33,17 +33,17 @@
     
     
     
-    <category term="Study" scheme="https://wk1044481101.github.io/SamsaraHexo/categories/Study/"/>
+    <category term="Study" scheme="https://github.com/wk1044481101/wk1044481101.github.io/categories/Study/"/>
     
     
-    <category term="-Java" scheme="https://wk1044481101.github.io/SamsaraHexo/tags/Java/"/>
+    <category term="-Java" scheme="https://github.com/wk1044481101/wk1044481101.github.io/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>Adamall</title>
-    <link href="https://wk1044481101.github.io/SamsaraHexo/2021/05/26/adamall/"/>
-    <id>https://wk1044481101.github.io/SamsaraHexo/2021/05/26/adamall/</id>
+    <link href="https://github.com/wk1044481101/wk1044481101.github.io/2021/05/26/adamall/"/>
+    <id>https://github.com/wk1044481101/wk1044481101.github.io/2021/05/26/adamall/</id>
     <published>2021-05-26T07:16:37.000Z</published>
     <updated>2021-06-15T11:04:20.280Z</updated>
     
@@ -57,17 +57,17 @@
     
     
     
-    <category term="Study" scheme="https://wk1044481101.github.io/SamsaraHexo/categories/Study/"/>
+    <category term="Study" scheme="https://github.com/wk1044481101/wk1044481101.github.io/categories/Study/"/>
     
     
-    <category term="-SpringBoot" scheme="https://wk1044481101.github.io/SamsaraHexo/tags/SpringBoot/"/>
+    <category term="-SpringBoot" scheme="https://github.com/wk1044481101/wk1044481101.github.io/tags/SpringBoot/"/>
     
   </entry>
   
   <entry>
     <title>HttpServer</title>
-    <link href="https://wk1044481101.github.io/SamsaraHexo/2021/05/16/HttpServer/"/>
-    <id>https://wk1044481101.github.io/SamsaraHexo/2021/05/16/HttpServer/</id>
+    <link href="https://github.com/wk1044481101/wk1044481101.github.io/2021/05/16/HttpServer/"/>
+    <id>https://github.com/wk1044481101/wk1044481101.github.io/2021/05/16/HttpServer/</id>
     <published>2021-05-16T11:43:07.000Z</published>
     <updated>2021-06-15T11:04:20.268Z</updated>
     
@@ -81,17 +81,17 @@
     
     
     
-    <category term="Study" scheme="https://wk1044481101.github.io/SamsaraHexo/categories/Study/"/>
+    <category term="Study" scheme="https://github.com/wk1044481101/wk1044481101.github.io/categories/Study/"/>
     
     
-    <category term="TCP/IP" scheme="https://wk1044481101.github.io/SamsaraHexo/tags/TCP-IP/"/>
+    <category term="TCP/IP" scheme="https://github.com/wk1044481101/wk1044481101.github.io/tags/TCP-IP/"/>
     
   </entry>
   
   <entry>
     <title>Html3</title>
-    <link href="https://wk1044481101.github.io/SamsaraHexo/2021/05/06/Html3/"/>
-    <id>https://wk1044481101.github.io/SamsaraHexo/2021/05/06/Html3/</id>
+    <link href="https://github.com/wk1044481101/wk1044481101.github.io/2021/05/06/Html3/"/>
+    <id>https://github.com/wk1044481101/wk1044481101.github.io/2021/05/06/Html3/</id>
     <published>2021-05-06T07:18:41.000Z</published>
     <updated>2021-06-15T11:07:51.460Z</updated>
     
@@ -107,17 +107,17 @@
     
     
     
-    <category term="Study" scheme="https://wk1044481101.github.io/SamsaraHexo/categories/Study/"/>
+    <category term="Study" scheme="https://github.com/wk1044481101/wk1044481101.github.io/categories/Study/"/>
     
     
-    <category term="-HTML" scheme="https://wk1044481101.github.io/SamsaraHexo/tags/HTML/"/>
+    <category term="-HTML" scheme="https://github.com/wk1044481101/wk1044481101.github.io/tags/HTML/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://wk1044481101.github.io/SamsaraHexo/2021/04/27/hello-world/"/>
-    <id>https://wk1044481101.github.io/SamsaraHexo/2021/04/27/hello-world/</id>
+    <link href="https://github.com/wk1044481101/wk1044481101.github.io/2021/04/27/hello-world/"/>
+    <id>https://github.com/wk1044481101/wk1044481101.github.io/2021/04/27/hello-world/</id>
     <published>2021-04-27T06:06:19.021Z</published>
     <updated>2021-04-27T06:06:19.021Z</updated>
     
@@ -136,8 +136,8 @@
   
   <entry>
     <title>Html2</title>
-    <link href="https://wk1044481101.github.io/SamsaraHexo/2021/04/19/Html2/"/>
-    <id>https://wk1044481101.github.io/SamsaraHexo/2021/04/19/Html2/</id>
+    <link href="https://github.com/wk1044481101/wk1044481101.github.io/2021/04/19/Html2/"/>
+    <id>https://github.com/wk1044481101/wk1044481101.github.io/2021/04/19/Html2/</id>
     <published>2021-04-19T10:19:40.000Z</published>
     <updated>2021-06-15T11:07:51.456Z</updated>
     
@@ -151,17 +151,17 @@
     
     
     
-    <category term="Study" scheme="https://wk1044481101.github.io/SamsaraHexo/categories/Study/"/>
+    <category term="Study" scheme="https://github.com/wk1044481101/wk1044481101.github.io/categories/Study/"/>
     
     
-    <category term="-HTML" scheme="https://wk1044481101.github.io/SamsaraHexo/tags/HTML/"/>
+    <category term="-HTML" scheme="https://github.com/wk1044481101/wk1044481101.github.io/tags/HTML/"/>
     
   </entry>
   
   <entry>
     <title>Firekaka</title>
-    <link href="https://wk1044481101.github.io/SamsaraHexo/2021/04/09/Firekaka/"/>
-    <id>https://wk1044481101.github.io/SamsaraHexo/2021/04/09/Firekaka/</id>
+    <link href="https://github.com/wk1044481101/wk1044481101.github.io/2021/04/09/Firekaka/"/>
+    <id>https://github.com/wk1044481101/wk1044481101.github.io/2021/04/09/Firekaka/</id>
     <published>2021-04-09T05:55:23.000Z</published>
     <updated>2021-06-15T11:07:51.256Z</updated>
     
@@ -175,17 +175,17 @@
     
     
     
-    <category term="Study" scheme="https://wk1044481101.github.io/SamsaraHexo/categories/Study/"/>
+    <category term="Study" scheme="https://github.com/wk1044481101/wk1044481101.github.io/categories/Study/"/>
     
     
-    <category term="-HTML" scheme="https://wk1044481101.github.io/SamsaraHexo/tags/HTML/"/>
+    <category term="-HTML" scheme="https://github.com/wk1044481101/wk1044481101.github.io/tags/HTML/"/>
     
   </entry>
   
   <entry>
     <title>Html1</title>
-    <link href="https://wk1044481101.github.io/SamsaraHexo/2021/03/23/Html1/"/>
-    <id>https://wk1044481101.github.io/SamsaraHexo/2021/03/23/Html1/</id>
+    <link href="https://github.com/wk1044481101/wk1044481101.github.io/2021/03/23/Html1/"/>
+    <id>https://github.com/wk1044481101/wk1044481101.github.io/2021/03/23/Html1/</id>
     <published>2021-03-23T08:27:53.000Z</published>
     <updated>2021-06-15T11:07:51.452Z</updated>
     
@@ -199,17 +199,17 @@
     
     
     
-    <category term="Study" scheme="https://wk1044481101.github.io/SamsaraHexo/categories/Study/"/>
+    <category term="Study" scheme="https://github.com/wk1044481101/wk1044481101.github.io/categories/Study/"/>
     
     
-    <category term="-HTML" scheme="https://wk1044481101.github.io/SamsaraHexo/tags/HTML/"/>
+    <category term="-HTML" scheme="https://github.com/wk1044481101/wk1044481101.github.io/tags/HTML/"/>
     
   </entry>
   
   <entry>
     <title>wechat</title>
-    <link href="https://wk1044481101.github.io/SamsaraHexo/2021/03/19/wechat/"/>
-    <id>https://wk1044481101.github.io/SamsaraHexo/2021/03/19/wechat/</id>
+    <link href="https://github.com/wk1044481101/wk1044481101.github.io/2021/03/19/wechat/"/>
+    <id>https://github.com/wk1044481101/wk1044481101.github.io/2021/03/19/wechat/</id>
     <published>2021-03-19T06:08:53.000Z</published>
     <updated>2021-06-15T11:08:05.532Z</updated>
     
@@ -223,17 +223,17 @@
     
     
     
-    <category term="Study" scheme="https://wk1044481101.github.io/SamsaraHexo/categories/Study/"/>
+    <category term="Study" scheme="https://github.com/wk1044481101/wk1044481101.github.io/categories/Study/"/>
     
     
-    <category term="-HTTP" scheme="https://wk1044481101.github.io/SamsaraHexo/tags/HTTP/"/>
+    <category term="-HTTP" scheme="https://github.com/wk1044481101/wk1044481101.github.io/tags/HTTP/"/>
     
   </entry>
   
   <entry>
     <title>Tetris</title>
-    <link href="https://wk1044481101.github.io/SamsaraHexo/2021/03/02/Tetris/"/>
-    <id>https://wk1044481101.github.io/SamsaraHexo/2021/03/02/Tetris/</id>
+    <link href="https://github.com/wk1044481101/wk1044481101.github.io/2021/03/02/Tetris/"/>
+    <id>https://github.com/wk1044481101/wk1044481101.github.io/2021/03/02/Tetris/</id>
     <published>2021-03-02T09:00:14.000Z</published>
     <updated>2021-06-15T11:04:20.284Z</updated>
     
@@ -247,17 +247,17 @@
     
     
     
-    <category term="Study" scheme="https://wk1044481101.github.io/SamsaraHexo/categories/Study/"/>
+    <category term="Study" scheme="https://github.com/wk1044481101/wk1044481101.github.io/categories/Study/"/>
     
     
-    <category term="-Java" scheme="https://wk1044481101.github.io/SamsaraHexo/tags/Java/"/>
+    <category term="-Java" scheme="https://github.com/wk1044481101/wk1044481101.github.io/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>YouNameIt</title>
-    <link href="https://wk1044481101.github.io/SamsaraHexo/2021/02/05/YouNameIt/"/>
-    <id>https://wk1044481101.github.io/SamsaraHexo/2021/02/05/YouNameIt/</id>
+    <link href="https://github.com/wk1044481101/wk1044481101.github.io/2021/02/05/YouNameIt/"/>
+    <id>https://github.com/wk1044481101/wk1044481101.github.io/2021/02/05/YouNameIt/</id>
     <published>2021-02-05T09:09:05.000Z</published>
     <updated>2021-06-15T11:04:20.244Z</updated>
     
@@ -271,17 +271,17 @@
     
     
     
-    <category term="Study" scheme="https://wk1044481101.github.io/SamsaraHexo/categories/Study/"/>
+    <category term="Study" scheme="https://github.com/wk1044481101/wk1044481101.github.io/categories/Study/"/>
     
     
-    <category term="-Java" scheme="https://wk1044481101.github.io/SamsaraHexo/tags/Java/"/>
+    <category term="-Java" scheme="https://github.com/wk1044481101/wk1044481101.github.io/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>ZORK</title>
-    <link href="https://wk1044481101.github.io/SamsaraHexo/2021/01/29/ZORK/"/>
-    <id>https://wk1044481101.github.io/SamsaraHexo/2021/01/29/ZORK/</id>
+    <link href="https://github.com/wk1044481101/wk1044481101.github.io/2021/01/29/ZORK/"/>
+    <id>https://github.com/wk1044481101/wk1044481101.github.io/2021/01/29/ZORK/</id>
     <published>2021-01-29T07:24:52.000Z</published>
     <updated>2021-06-15T11:04:20.256Z</updated>
     
@@ -295,17 +295,17 @@
     
     
     
-    <category term="Study" scheme="https://wk1044481101.github.io/SamsaraHexo/categories/Study/"/>
+    <category term="Study" scheme="https://github.com/wk1044481101/wk1044481101.github.io/categories/Study/"/>
     
     
-    <category term="-Java" scheme="https://wk1044481101.github.io/SamsaraHexo/tags/Java/"/>
+    <category term="-Java" scheme="https://github.com/wk1044481101/wk1044481101.github.io/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>PS</title>
-    <link href="https://wk1044481101.github.io/SamsaraHexo/2021/01/19/PS/"/>
-    <id>https://wk1044481101.github.io/SamsaraHexo/2021/01/19/PS/</id>
+    <link href="https://github.com/wk1044481101/wk1044481101.github.io/2021/01/19/PS/"/>
+    <id>https://github.com/wk1044481101/wk1044481101.github.io/2021/01/19/PS/</id>
     <published>2021-01-19T09:52:27.000Z</published>
     <updated>2021-06-15T11:04:20.252Z</updated>
     
@@ -319,17 +319,17 @@
     
     
     
-    <category term="Study" scheme="https://wk1044481101.github.io/SamsaraHexo/categories/Study/"/>
+    <category term="Study" scheme="https://github.com/wk1044481101/wk1044481101.github.io/categories/Study/"/>
     
     
-    <category term="-Java" scheme="https://wk1044481101.github.io/SamsaraHexo/tags/Java/"/>
+    <category term="-Java" scheme="https://github.com/wk1044481101/wk1044481101.github.io/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>Arkanoid</title>
-    <link href="https://wk1044481101.github.io/SamsaraHexo/2021/01/13/Arkanoid/"/>
-    <id>https://wk1044481101.github.io/SamsaraHexo/2021/01/13/Arkanoid/</id>
+    <link href="https://github.com/wk1044481101/wk1044481101.github.io/2021/01/13/Arkanoid/"/>
+    <id>https://github.com/wk1044481101/wk1044481101.github.io/2021/01/13/Arkanoid/</id>
     <published>2021-01-13T13:33:49.000Z</published>
     <updated>2021-06-15T11:04:20.276Z</updated>
     
@@ -343,17 +343,17 @@
     
     
     
-    <category term="Study" scheme="https://wk1044481101.github.io/SamsaraHexo/categories/Study/"/>
+    <category term="Study" scheme="https://github.com/wk1044481101/wk1044481101.github.io/categories/Study/"/>
     
     
-    <category term="-Java" scheme="https://wk1044481101.github.io/SamsaraHexo/tags/Java/"/>
+    <category term="-Java" scheme="https://github.com/wk1044481101/wk1044481101.github.io/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>C@SIO_Calculator</title>
-    <link href="https://wk1044481101.github.io/SamsaraHexo/2021/01/07/C@sio_Calculator/"/>
-    <id>https://wk1044481101.github.io/SamsaraHexo/2021/01/07/C@sio_Calculator/</id>
+    <link href="https://github.com/wk1044481101/wk1044481101.github.io/2021/01/07/C@sio_Calculator/"/>
+    <id>https://github.com/wk1044481101/wk1044481101.github.io/2021/01/07/C@sio_Calculator/</id>
     <published>2021-01-07T03:13:49.000Z</published>
     <updated>2021-06-15T11:04:20.300Z</updated>
     
@@ -367,10 +367,10 @@
     
     
     
-    <category term="Study" scheme="https://wk1044481101.github.io/SamsaraHexo/categories/Study/"/>
+    <category term="Study" scheme="https://github.com/wk1044481101/wk1044481101.github.io/categories/Study/"/>
     
     
-    <category term="-Java" scheme="https://wk1044481101.github.io/SamsaraHexo/tags/Java/"/>
+    <category term="-Java" scheme="https://github.com/wk1044481101/wk1044481101.github.io/tags/Java/"/>
     
   </entry>
   
