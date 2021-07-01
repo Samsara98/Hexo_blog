@@ -116,13 +116,6 @@
 
   
   <url>
-    <loc>https://wk1044481101.github.io/tags/TCP-IP/</loc>
-    <lastmod>2021-07-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://wk1044481101.github.io/tags/Java/</loc>
     <lastmod>2021-07-01</lastmod>
     <changefreq>daily</changefreq>
@@ -131,6 +124,13 @@
   
   <url>
     <loc>https://wk1044481101.github.io/tags/HTML/</loc>
+    <lastmod>2021-07-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wk1044481101.github.io/tags/TCP-IP/</loc>
     <lastmod>2021-07-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
